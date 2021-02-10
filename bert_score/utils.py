@@ -134,7 +134,8 @@ def get_model(model_type, num_layers, all_layers=None):
     if model_type.startswith("scibert"):
         model = AutoModel.from_pretrained(cache_scibert(model_type))
     else:
-        model = AutoModel.from_pretrained(model_type)
+#         model = AutoModel.from_pretrained(model_type)  # i commented this out
+        model = AutoModel.from_pretrained(model_type, cache_dir='/projects/uoml/anoack2/.cache')  # and added this line, specifically for Talapas
     model.eval()
 
     # drop unused layers
